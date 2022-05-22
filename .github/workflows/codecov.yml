@@ -1,0 +1,26 @@
+name: Test and coverage
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-go@v2
+        with:
+          go-version: '1.18.2'
+      - name: Install Tesseract and Run coverage
+        run: |
+          sudo apt update
+          sudo add-apt-repository -y ppa:alex-p/tesseract-ocr5
+          sudo apt install -y libleptonica-dev libtesseract-dev tesseract-ocr
+          go test -race -coverprofile=coverage.out -covermode=atomic
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v2

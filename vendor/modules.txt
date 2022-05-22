@@ -1,0 +1,11 @@
+# github.com/corona10/goimagehash v1.0.3
+## explicit
+github.com/corona10/goimagehash
+github.com/corona10/goimagehash/etcs
+github.com/corona10/goimagehash/transforms
+# github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646
+## explicit
+github.com/nfnt/resize
+# github.com/otiai10/gosseract/v2 v2.3.1
+## explicit; go 1.14
+github.com/otiai10/gosseract/v2
