@@ -83,7 +83,7 @@ func TestIsColorWithOffset(t *testing.T) {
 
 func TestGetColorNum(t *testing.T) {
 	expectedFound := uint(16)
-	fs, e := os.Open("test/reset-code.png")
+	fs, e := os.Open("images/reset-code.png")
 	if e != nil {
 		t.Fatal(e)
 	}
@@ -103,7 +103,7 @@ func TestGetColorNum(t *testing.T) {
 
 func TestGetColorNumWithOffset(t *testing.T) {
 	expectedFound := uint(16)
-	fs, e := os.Open("test/reset-code.png")
+	fs, e := os.Open("images/reset-code.png")
 	if e != nil {
 		t.Fatal(e)
 	}
