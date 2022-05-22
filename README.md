@@ -1,5 +1,7 @@
 # eggbite
 
+[![codecov](https://codecov.io/gh/arkjxu/eggbite/branch/main/graph/badge.svg?token=OGIH18EW43)](https://codecov.io/gh/arkjxu/eggbite)
+
 An experiment package to help with Android scripting/automation.
 
 _notes:_ APIs are subject to change.
