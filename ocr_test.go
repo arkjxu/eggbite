@@ -9,7 +9,7 @@ import (
 func TestOCRNumberCode(t *testing.T) {
 	eggbite.InitOCR(eggbite.English)
 	defer eggbite.CloseOCR()
-	text, e := eggbite.FindTextWithFile("test/reset-code.png")
+	text, e := eggbite.FindTextWithFile("images/reset-code.png")
 	if e != nil {
 		t.Fatal(e)
 	}
