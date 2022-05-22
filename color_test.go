@@ -120,3 +120,20 @@ func TestGetColorNumWithOffset(t *testing.T) {
 		t.Fatalf("should only find %d, but found %d", expectedFound, count)
 	}
 }
+
+func TestFindColorWithRegion(t *testing.T) {
+	testImage, e := eggbite.ImageFromFile("images/rest-code.png")
+	if e != nil {
+		t.Fatal(e)
+	}
+	colorToFind := color.RGBA{
+		R: 255,
+		G: 87,
+		B: 51,
+	}
+	x, y, e := eggbite.FindColorWithRegion(testImage, colorToFind, testImage.Bounds(), 1)
+	if e != nil {
+		t.Fatal(e)
+	}
+	fmt.Println(x, y)
+}
