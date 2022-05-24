@@ -122,7 +122,7 @@ func TestGetColorNumWithOffset(t *testing.T) {
 }
 
 func TestFindColorWithRegion(t *testing.T) {
-	testImage, e := eggbite.ImageFromFile("images/rest-code.png")
+	testImage, e := eggbite.ImageFromFile("images/reset-code.png")
 	if e != nil {
 		t.Fatal(e)
 	}
