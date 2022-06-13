@@ -104,6 +104,68 @@ func FindColorWithOffset(src image.Image, colorToFind color.Color, offset color.
 	return x, y
 }
 
+func FindColorWithRegion(src image.Image, colorToFind color.Color, region image.Rectangle, similarity float64) (x, y int, e error) {
+	x, y = -1, -1
+
+	x1, y1 := region.Min.X, region.Min.Y
+	x2, y2 := region.Max.X, region.Max.Y
+
+	regionWidth := region.Dx()
+	regionHeight := region.Dy()
+
+	imageSize := src.Bounds().Size()
+
+	width := imageSize.X
+	height := imageSize.Y
+
+	if width < regionWidth || height < regionHeight {
+		return x, y, errors.New("region cannot be outside of source image's bounds")
+	}
+
+	for y := y1; y < y2; y++ {
+		for x := x1; x < x2; x++ {
+			colorAtPix := src.At(x, y)
+			isColorFound := IsColor(colorAtPix, colorToFind, similarity)
+			if isColorFound {
+				return x, y, nil
+			}
+		}
+	}
+
+	return x, y, nil
+}
+
+func FindColorWithRegionAndOffset(src image.Image, colorToFind color.Color, offset color.Color, region image.Rectangle, similarity float64) (x, y int, e error) {
+	x, y = -1, -1
+
+	x1, y1 := region.Min.X, region.Min.Y
+	x2, y2 := region.Max.X, region.Max.Y
+
+	regionWidth := region.Dx()
+	regionHeight := region.Dy()
+
+	imageSize := src.Bounds().Size()
+
+	width := imageSize.X
+	height := imageSize.Y
+
+	if width < regionWidth || height < regionHeight {
+		return x, y, errors.New("region cannot be outside of source image's bounds")
+	}
+
+	for y := y1; y < y2; y++ {
+		for x := x1; x < x2; x++ {
+			colorAtPix := src.At(x, y)
+			isColorFound := IsColorWithOffset(colorAtPix, colorToFind, offset, similarity)
+			if isColorFound {
+				return x, y, nil
+			}
+		}
+	}
+
+	return x, y, nil
+}
+
 func GetColorNum(img image.Image, colorToFind color.Color, similarity float64) (uint, error) {
 	imageSize := img.Bounds().Size()
 
